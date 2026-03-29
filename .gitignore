@@ -1,3 +1,15 @@
+
+
+
+
+# Exclude all files in services/user
+services/user/**
+
+# Except myapp (and its contents)
+!services/user/MyApp/
+!services/user/MyApp/**/*
+
+
 .caches
 .ccache
 .cache
@@ -36,6 +48,10 @@ __pycache__
 ccache.conf
 bindings.rs
 target/
+Cargo.lock
 **/install-state.gz
 .clangd
 AGENTS.md
+
+
+!services/user/MyApp/.vscode

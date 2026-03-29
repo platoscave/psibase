@@ -1,0 +1,24 @@
+[package]
+name = "my-app"
+version.workspace = true
+rust-version.workspace = true
+edition.workspace = true
+publish.workspace = true
+
+[package.metadata.psibase]
+server = "r-my-app"
+plugin = "plugin"
+data = [{ src = "../ui/dist", dst = "/" }]
+postinstall = [
+    { sender = "my-app", service = "my-app", method = "init", rawData = "0000" },
+]
+
+[dependencies]
+psibase = { version = "0.15.0", path = "../../../../rust/psibase" }
+psibase_macros = { version = "0.15.0", path = "../../../../rust/psibase_macros" }
+async-graphql = "7.0.7"
+serde = { version = "1.0.208", features = ["derive"] }
+serde_json = "1.0.120"
+
+[dev-dependencies]
+my-app-pkg = { path = "..", version = "0.15.0" }
